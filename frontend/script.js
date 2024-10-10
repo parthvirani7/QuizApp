@@ -1,7 +1,7 @@
 const quizContainer = document.getElementById('quiz');
 const submitButton = document.getElementById('submit-btn');
 const resultContainer = document.getElementById('result');
-const quizId = '60d5ec49e3c3f10015c5d6a0'; // Replace with a valid quiz ID
+const quizId = '60d5ec49e3c3f10015c5d6a0'; 
 
 // Fetch the quiz from the backend
 async function fetchQuiz() {
@@ -42,15 +42,13 @@ function displayQuiz(quiz) {
     });
 }
 
-// Handle quiz submission
 submitButton.addEventListener('click', () => {
     const answers = Array.from({ length: quizContainer.querySelectorAll('.question').length }, (_, index) => {
         return document.querySelector(`input[name="question${index}"]:checked`)?.value || null;
     });
 
-    const score = answers.filter(answer => answer === "4").length; // Adjust this logic based on correct answers
+    const score = answers.filter(answer => answer === "4").length;
     resultContainer.innerHTML = `Your score: ${score} out of ${answers.length}`;
 });
 
-// Fetch the quiz on page load
 fetchQuiz();
